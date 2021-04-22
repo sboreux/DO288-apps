@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Performing the S2I build..."
+
+default-route-openshift-image-registry.apps.eu45.prod.nextcle.com/openshift/nodejs
+
+rc=$?
+
+if [ $rc -eq 0 ]; then
+    echo "Recording successful build on the life cycle management system..."
+else
+    echo "Not calling the life cycle management system: S2I build failed!"
+fi
+exit $rc
